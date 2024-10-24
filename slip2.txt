@@ -1,0 +1,151 @@
+Q1]
+A]
+
+import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.linspace(0,10)
+ f=np.log10(x)
+ plt.plot(x,f)
+ plt.show()
+
+ B]
+
+  from pylab import*
+ import numpy as np
+ def f(x,y):
+    return np.sin(x**2+y**2)
+ x=np.linspace(0,10,30)
+ y=np.linspace(0,10,30)
+ X,Y=np.meshgrid(x,y)
+ Z=f(X,Y)
+ ax=axes(projection='3d')
+ ax.plot_surface(X,Y,Z)
+ xlabel('x')
+ ylabel('y')
+ title('Surface Plot')
+ show()
+
+C]
+
+ import matplotlib.pyplot as plt
+ left=[1,2,3,4,5]
+ height=[68,90,70,85,91]
+ tick_label=['Maths','Science','English','Marathi','Hindi']
+ plt.bar(left,height,tick_label=tick_label,width=0.3,color=['green'])
+ plt.xlabel('Subject')
+ plt.ylabel('Percentage of passing')
+ plt.title('Bar Graph')
+ plt.show()
+
+ Q2]
+ A]
+
+ A=Point(0,2)
+ B=Point(5,2)
+ C=Point(3,0)
+
+ Point.is_collinear(A,B,C)
+
+ L=Line(A,B)
+
+ L.distance(C)
+
+B]
+
+P=Polygon((1,2),1,n=6)
+
+ P.area
+
+  P.perimeter
+
+
+C]
+
+ A=Point(0,0)
+ B=Point(6,0)
+ C=Point(4,4)
+ T=Triangle(A,B,C)
+
+ T.area
+
+  T.perimeter
+
+Q3]
+A]
+i]
+
+ from pulp import*
+ model=LpProblem(name="Lp-Problem",sense=LpMaximize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ model+=(x+y<=7)
+ model+=(2*x+5*y<=1)
+ model+=5*x+3*y
+ model
+
+ model.solve() 
+
+ model.objective.value()
+
+ x.value()
+
+y.value()
+
+
+ii]
+
+ from pulp import*
+ model=LpProblem(name="Lp-Problem",sense=LpMaximize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ z=LpVariable(name='z',lowBound=0)
+ model+=(x+2*y+z<=430)
+ model+=(3*x+2*z<=460)
+ model+=(x+4*y<=120)
+ model+=3*x+2*y+5*z
+ model
+
+model.solve()
+
+model.objective.value()
+
+x.value()
+
+y.value()
+
+ z.value()
+
+
+ B]
+i]
+
+ P=Point(4,-2)
+
+ from numpy import*
+
+ P.transform(Matrix([[-1,0,0],[0,1,0],[0,0,1]]))
+
+  P.scale(3,0)
+
+ P.scale(0,2.5)
+
+  x,y=symbols('x,y')
+ P.reflect(Line(x+y+0))
+
+
+ ii]
+
+  A=Point(4,-1)
+ B=Point(3,0)
+ S=Segment(A,B)
+ S=S.rotate(pi)
+ points=S.points
+ p=points[0]
+ q=points[1]
+ p1=p.transform(Matrix([[1,0,0],[4.5,1,0],[0,0,1]]))
+ q1=q.transform(Matrix([[1,0,0],[4.5,1,0],[0,0,1]]))
+ Segment(p1,q1)
+ S.scale(3,0)
+ p1=p.transform(Matrix([[0,1,0],[1,0,0],[0,0,1]]))
+ q1=q.transform(Matrix([[0,1,0],[1,0,0],[0,0,1]]))
+ Segment(p1,q1)

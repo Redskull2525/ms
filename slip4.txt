@@ -1,0 +1,147 @@
+ Q.1]
+ A]
+
+  import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.linspace(0,10)
+ f=np.log10(x)
+ plt.plot(x,f)
+ plt.show()
+
+ B]
+
+  import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.linspace(-1,1)
+ f=np.sin(x)**-1
+ plt.plot(x,f)
+ plt.show()
+
+ C]
+
+  from pylab import*
+ import numpy as np
+ def f(x,y):
+    return x**2+y**2
+ x=np.linspace(-6,6,30)
+ y=np.linspace(-6,6,30)
+ X,Y=meshgrid(x,y)
+ Z=f(X,Y)
+ ax=axes(projection='3d')
+ ax.plot_surface(X,Y,Z)
+ xlabel('x')
+ ylabel('y')
+ title('Surface plot')
+ show()
+
+
+Q.2]
+A]
+
+ A=Point(3,1)
+ B=Point(5,-1)
+ A1=A.transform(Matrix([[3,-2,0],[2,1,0],[0,0,1]]))
+ B1=B.transform(Matrix([[3,-2,0],[2,1,0],[0,0,1]]))
+ L=Line(A1,B1)
+ L.equation()
+
+
+B]
+
+ A=Point(0,0)
+ B=Point(2,0)
+ C=Point(2,3)
+ D=Point(1,6)
+ P=Polygon(A,B,C,D)
+ P.rotate(pi)
+
+ C]
+
+  A=Point(2,3)
+ B=Point(4,3)
+ L=Line(A,B)
+ L.equation()
+
+  Q.3]
+A]
+i]
+
+ from pulp import*
+ model=LpProblem(name="Lp-Problem",sense=LpMaximize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ model+=(4*x+6*y<=24)
+ model+=(5*x+3*y<=15)
+ model+=150*x+75*y
+ model
+
+model.solve() 
+
+model.objective.value()
+
+x.value()
+
+y.value()
+
+ii]
+
+ from pulp import*
+ model=LpProblem(name="Lp-Problem",sense=LpMaximize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ z=LpVariable(name='z',lowBound=0)
+ w=LpVariable(name='w',lowBound=0)
+ model+=(4*x+6*y-5*z-4*w>=-20)
+ model+=(-8*x-3*y+3*z+2*w<=20)
+ model+=(x+y<=11)
+ model+=4*x+y+3*z+5*w
+ model
+
+model.solve() 
+
+model.objective.value()
+
+x.value()
+
+y.value()
+
+z.value()
+
+w.value()
+
+B]
+i]
+
+ import matplotlib.pyplot as plt
+ from mpl_toolkits import mplot3d
+ points=[(70,-25,15),(50,72,-45),(58,-82,65),(20,72,-45)]
+ a,b,c=zip(*points)
+ fig=plt.figure()
+ ax=fig.add_subplot(111,projection='3d')
+ ax.scatter(a[0],b[0],c[0],'black',label='(70,-25,15)',marker='D')
+ ax.scatter(a[1],b[1],c[1],'green',label='(50,72,-45)',marker='*')
+ ax.scatter(a[2],b[2],c[2],'green',label='(50,-82,65)',marker='.')
+ ax.scatter(a[3],b[3],c[3],'red',label='(20,72,-45)',marker='*')
+ ax.set_xlabel('X-axis')
+ ax.set_ylabel('Y-axis')
+ ax.set_zlabel('Z-axis')
+ plt.show()
+
+
+ii]
+
+ A=Point(4,-1)
+ B=Point(3,0)
+ S=Segment(A,B)
+ points=S.points
+ p=points[0]
+ q=points[1]
+ p1=p.transform(Matrix([[1,9,0],[0,1,0],[0,0,1]]))
+ q1=q.transform(Matrix([[1,9,0],[0,1,0],[0,0,1]]))
+ Segment(p1,q1)
+ S.rotate(pi)
+ S.scale(2,0)
+ p1=p.transform(Matrix([[0,1,0],[1,0,0],[0,0,1]]))
+ q1=q.transform(Matrix([[0,1,0],[1,0,0],[0,0,1]]))
+ Segment(p1,q1)
+ 

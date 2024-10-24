@@ -1,0 +1,143 @@
+Q1]
+A]
+
+ A=Point(0,0)
+ B=Point(5,0)
+ C=Point(3,3)
+ T=Triangle(A,B,C)
+ T.area
+
+ B]
+
+  import matplotlib.pyplot as plt
+ import numpy as np
+ def f(x):
+    if x>=-10 and x<5:
+        return x**2+4
+    elif x>=5 and x<10:
+        return 3*x+9
+    else:
+        return None
+ x=np.arange(-10,10.1,0.1)
+ y=np.array([f(xi) for xi in x])
+ plt.plot(x,y)
+ show()
+
+ 
+C]
+
+ import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.linspace(0,5)
+ a=np.sin(x)
+ b=np.cos(x)
+ c=np.exp(x)
+ d=x**2
+ subplot(2,2,1)
+ plt.plot(x,a,label='$sin(x)$')
+ legend()
+ subplot(2,2,2)
+ plt.plot(x,b,label='$cos(x)$')
+ legend()
+ subplot(2,2,3)
+ plt.plot(x,c,label='$e^x$')
+ legend()
+ subplot(2,2,4)
+ plt.plot(x,d,label='x^2')
+ legend()
+ show()
+
+Q2]
+A]
+
+ A=Point(1,2)
+ B=Point(2,-2)
+ C=Point(-1,2)
+ T=Triangle(A,B,C)
+ T.rotate(pi)
+
+ B]
+
+  import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.linspace(-10,10)
+ f=np.exp(x)
+ plt.plot(x,f)
+ plt.xlabel('x-axis')
+ plt.ylabel('y-axis')
+ plt.show()
+
+ C]
+
+ import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.linspace(10,20)
+ f=np.cos(2*x)
+ g=np.sin(2*x)
+ h=x
+ plt.plot(x,f,'red')
+ plt.plot(x,g,'red')
+ plt.plot(x,h,'red')
+ plt.xlabel('x-axis')
+ plt.ylabel('y-axis')
+ plt.show()
+
+ Q3]
+ A]
+ i]
+
+ from pulp import*
+ model=LpProblem(name='Lp-Problem',sense=LpMinimize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ model+=(x+y>=5)
+ model+=(x>=4)
+ model+=(y<=2)
+ model+=3.5*x+2*y
+ model
+
+model.solve() 
+
+model.objective.value()
+
+x.value()
+
+y.value()
+
+ii]
+
+ from pulp import*
+ model=LpProblem(name='Lp-Problem',sense=LpMinimize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ model+=(x>=6)
+ model+=(y>=6)
+ model+=(x+y<=11)
+ model+=x+y
+ model
+
+  model.solve()
+
+B]
+i]
+
+   A=Point(5,3)
+ B=Point(1,4)
+ S=Segment(A,B)
+ S.rotate(pi/2)
+ S.scale(5,0)
+ x,y=symbols('x,y')
+ S.reflect(Line(x+y+0))
+
+ii]
+
+ P=Point(-2,4)
+
+x,y=symbols('x,y')
+P.reflect(Line(x-y+1))
+
+P.scale(0,1.5)
+
+P.transform(Matrix([[1,2,0],[0,1,0],[0,0,1]]))
+
+P.rotate(pi/4)

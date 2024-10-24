@@ -1,0 +1,153 @@
+ Q.1]
+ A]
+
+  from pylab import*
+ def f(x,y):
+    return np.cos(x**2+y**2-0.5)
+ x=np.linspace(-1,1,30)
+ y=np.linspace(-1,1,30)
+ X,Y=np.meshgrid(x,y)
+ Z=f(X,Y)
+ ax=axes(projection='3d')
+ ax.plot_surface(X,Y,Z)
+ xlabel('x')
+ ylabel('y')
+ title('Surface Plot')
+ show()
+
+ B]
+
+  from pylab import*
+ def f(x,y):
+    return np.sin(x**2+y**2)
+ x=np.linspace(0,10,30)
+ y=np.linspace(0,10,30)
+ X,Y=np.meshgrid(x,y)
+ Z=f(X,Y)
+ ax=axes(projection='3d')
+ ax.plot_surface(X,Y,Z)
+ xlabel=('x')
+ ylabel=('Y')
+ title('Surface Plot')
+ show()
+
+ C]
+
+  from pylab import*
+ def f(x,y):
+    return np.sin(x)+np.cos(y)
+ x=np.linspace(-10,10)
+ y=np.linspace(-10,10)
+ X,Y=np.meshgrid(x,y)
+ Z=f(X,Y)
+ ax=axes(projection='3d')
+ ax.contour3D(X,Y,Z,50)
+ xlabel('x')
+ ylabel('y')
+ title('3D contour')
+ show()
+
+ Q2]
+ A]
+
+  A=Point(0,0)
+ B=Point(4,0)
+ C=Point(4,3)
+ T=Triangle(A,B,C)
+ T.is_right()
+
+  T=Triangle(Point(0,0),Point(4,0),(4,3))
+ T.is_right()
+
+ B]
+
+ import numpy as np
+ x=np.linspace(-7,7,50)
+ print(x)
+
+  T=Triangle(Point(0,0),Point(6,0),Point(4,4))
+ T.area
+
+  T.perimeter
+
+
+ Q.3 ]
+ A]
+i]
+
+ from pulp import*
+ model=LpProblem(name="Lp-Problem",sense=LpMaximize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ model+=(x+y<=7)
+ model+=(2*x+5*y<=1)
+ model+=5*x+3*y
+ model
+
+model.solve() 
+
+model.objective.value()
+
+x.value()
+
+y.value()
+
+ii]
+
+ from pulp import*
+ model=LpProblem(name="Lp-Problem",sense=LpMaximize)
+ x=LpVariable(name='x',lowBound=0)
+ y=LpVariable(name='y',lowBound=0)
+ z=LpVariable(name='z',lowBound=0)
+ w=LpVariable(name='w',lowBound=0)
+ model+=(4*x+6*y-5*z-4*w>=20)
+ model+=(-3*x-2*y+4*z+w<=10)
+ model+=(-8*x-3*y+3*z+2*w<=20)
+ model+=(x+y<=11)
+ model+=4*x+y+3*z+5*w
+ model
+
+model.solve() 
+
+model.objective.value()
+
+x.value()
+
+y.value()
+
+z.value()
+
+w.value()
+
+B]
+i]
+
+ P=Point(3,8)
+
+  P.transform(Matrix([[1,0,0],[0,-1,0],[0,0,1]]))
+
+   P.scale(6,0)
+
+    P.rotate(pi/6)
+
+     P.transform(Matrix([[0,-1,0],[-1,0,0],[0,0,1]]))
+
+ii]
+
+ import matplotlib.pyplot as plt
+ x1=[5,7,6,5]
+ y1=[4,4,6,4]
+ plt.plot(x1,y1,'black')
+ plt.fill(x1,y1,color='green')
+ x2=[2,10,10,2,2]
+ y2=[2,2,8,8,2]
+ plt.plot(x2,y2,'black')
+ plt.fill(x2,y2,color='blue')
+ x3=[6,10,8,4,2,6]
+ y3=[2,4,7,8,4,2]
+ plt.plot(x3,y3,'black')
+ plt.fill(x3,y3,color='red')
+ x4=[0,4,2,0]
+ y4=[0,0,4,0]
+ plt.plot(x4,y4,'black')
+ plt.fill(x4,y4,color='purple')

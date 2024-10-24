@@ -1,0 +1,130 @@
+Q1
+A)
+
+ import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.linspace(-1,1)
+ f=x**2
+ g=x**3
+ plt.plot(x,f)
+ plt.plot(x,g)
+ plt.show()
+
+B)
+
+ from pylab import*
+ import numpy as np
+ x=np.linspace(-5,5)
+ y=np.exp(-x**2)
+ plot(x,y,'-.^g')
+ xlabel('x-axis')
+ ylabel('y-axis')
+ title('The graph of function $ e^-x^2 $')
+ show()
+
+ C)
+
+  import matplotlib.pyplot as plt
+ left=[1,2,3,4,5]
+ height=[600,4000,2000,1500,700]
+ tick_label=['Clothing','Food','Rent','Petrol','Misc...']
+ plt.bar(left,height,tick_label=tick_label,width=0.3,color=['green'])
+ plt.xlabel('Item')
+ plt.ylabel('Expenditure in Rs')
+ plt.title('Bar Graph')
+ plt.show()
+
+ Q2)
+ A)
+
+from sympy import*
+ x,y=symbols('x,y')
+ A=Point(5,3)
+ B=Point(1,4)
+ S=Segment(A,B)
+ S.reflect(Line(x-y+1))
+
+B)
+
+A=Point(0,0)
+ B=Point(2,0)
+ C=Point(2,3)
+ D=Point(1,6)
+ P=Polygon(A,B,C,D)
+ P.rotate(pi)
+
+ C)
+
+  A=Point(0,0)
+ B=Point(5,0)
+ C=Point(3,3)
+ T=Triangle(A,B,C)
+
+  T.area
+
+ T.perimeter
+
+  Q.3
+  A)
+i]
+
+   from pulp import*
+ model=LpProblem(name="Lp-Problem", sense=LpMaximize)
+ x=LpVariable(name="x",lowBound=0)
+ y=LpVariable(name="y",lowBound=0)
+ model+=(4*x+6*y<=24)
+ model+=(5*x+3*y<=15)
+ model+=150*x+75*y
+ model
+
+    model.solve()
+
+    model.objective.value()
+
+    x.value()
+
+     y.value()
+
+ii]
+
+ from pulp import*
+ model=LpProblem(name="Lp-Problem",sense=LpMinimize)
+ x=LpVariable(name="x",lowBound=0)
+ y=LpVariable(name="y",lowBound=0)
+ model+=(x>=6)
+ model+=(y>=6)
+ model+=(x+y<=11)
+ model+=x+y
+ model
+
+ model.solve()
+
+B)
+i]
+
+P.transform(Matrix([[1,0,0],[0,-1,0],[0,0,1]]))
+
+ P.scale(2,0)
+
+  P.scale(0,1.5)
+
+   x,y=symbols('x,y')
+ P.reflect(Line(x-y+0))
+
+
+ii]
+
+ A=Point(5,-2)
+ B=Point(4,3)
+ S=Segment(A,B)
+ S=S.rotate(pi)
+ S=S.scale(2,0)
+ points=S.points
+ p=points[0]
+ q=points[1]
+ p1=p.transform(Matrix([[0,1,0],[1,0,0],[0,0,1]]))
+ q1=q.transform(Matrix([[0,1,0],[1,0,0],[0,0,1]]))
+ Segment(p1,q1)
+ p1=p.transform(Matrix([[1,4,0],[0,1,0],[0,0,1]]))
+ q1=q.transform(Matrix([[1,4,0],[0,1,0],[0,0,1]]))
+ Segment(p1,q1)
